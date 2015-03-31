@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>My First JSP</title>
+</head>
+
+<%
+	String valueInString = request.getParameter("amount");
+	int value = Integer.parseInt(valueInString);
+	String theName = request.getParameter("name");
+%>
+
+
+<body>
+
+	<%
+		if (value > 10000) {
+	%>
+
+	<%=theName%>, welcome to MyFirstJSP page with two wide open arms.
+	<br> Whatever you want, please tell us. We will do it.
+	<br>
+	<%
+		}
+
+		else {
+	%>
+	Hey, what's up? What's it you need?
+
+	<%
+		}
+	%>
+
+</body>
+</html>
