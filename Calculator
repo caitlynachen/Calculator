@@ -1,0 +1,51 @@
+# CalculatorTomcat
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>My Simple Calculator</title>
+</head>
+
+<%
+	String param1 = request.getParameter("value1");
+	String param2 = request.getParameter("value2");
+
+	int value1 = Integer.parseInt(param1);
+	int value2 = Integer.parseInt(param2);
+
+	int sum = value1 + value2;
+	int difference = value1 - value2;
+	int product = value1 * value2;
+	double quotient1 = (double) value1 / value2;
+	int quotient2 = (int) (quotient1 * 100000);
+	double quotient = (double) quotient2 / 100000;
+%>
+
+
+<body>
+
+	<table border="1">
+
+		<tr>
+			<td width=150>Sum (value1+value2)</td>
+			<td width=150><%=sum%></td>
+		</tr>
+		<tr>
+			<td width=150>Difference (value1-value2)</td>
+			<td width=150><%=difference%></td>
+		</tr>
+		<tr>
+			<td width=150>Product(value1*value2)</td>
+			<td width=150><%=product%></td>
+		</tr>
+		<tr>
+			<td width=150>Quotient (value1/value2)</td>
+			<td width=150><%=quotient%></td>
+		</tr>
+	</table>
+
+
+</body>
+</html>
