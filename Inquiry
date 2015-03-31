@@ -1,0 +1,51 @@
+<%@ page language="java" import="java.io.*, java.util.*"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<%
+	ArrayList<String> lastNames = new ArrayList<String>();
+	ArrayList<String> titles = new ArrayList<String>();
+	ArrayList<String> grades = new ArrayList<String>();
+	
+	FileInputStream fis = new FileInputStream("c:/serverDataFolder/serverData.txt");
+	InputStreamReader isr = new InputStreamReader(fis);
+	BufferedReader br = new BufferedReader(isr);
+
+	while (true) {
+		String line = br.readLine();
+		if (line == null)
+			break;
+
+		StringTokenizer st = new StringTokenizer(line, " ");
+		lastNames.add(st.nextToken());
+		titles.add(st.nextToken());
+		grades.add(st.nextToken());
+	}
+
+	br.close();
+%>
+
+
+<body>
+
+	<br>
+	<br>
+	<table border=1>
+	<%
+	for(int i=0; i<lastNames.size(); i++){
+		 %>
+	<tr>
+		<td width=150><%=lastNames.get(i) %></td>
+		<td width=150><%=titles.get(i) %>.</td>
+		<td width=150><%=grades.get(i) %></td>
+	</tr>
+	<%
+	}
+	%>
+	</table>
+</body>
+</html>
