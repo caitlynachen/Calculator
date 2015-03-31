@@ -1,0 +1,63 @@
+<%@ page language="java" import="java.io.*"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Response</title>
+</head>
+<body>
+
+
+	<%
+		String lastName = request.getParameter("lastName");
+		String title = request.getParameter("title");
+		String grade = request.getParameter("grade");
+
+		boolean shouldRespond = lastName.trim().length() != 0
+				&& grade.trim().length() != 0;
+
+		if (shouldRespond) {
+			FileOutputStream fos = new FileOutputStream(
+					"c:/serverDataFolder/serverData.txt", true);
+			OutputStreamWriter osw = new OutputStreamWriter(fos);
+			PrintWriter pw = new PrintWriter(osw);
+
+			StringBuffer sb = new StringBuffer();
+			sb.append(lastName);
+			sb.append(" ");
+			sb.append(title);
+			sb.append(" ");
+			sb.append(grade);
+
+			pw.println(sb.toString());
+			pw.flush();
+			pw.close();
+	%>
+
+	Hello
+	<%=title%>.
+	<%=lastName%>
+	<br> We understand that you want to register
+	<br> your child who is in
+	<%=grade%>
+	grade.
+
+	<%
+		} else {
+	%>
+	You did not fill the form completely.
+	<br> Please try again. Click
+	<a href="RegisterForm.html"> here.</a>
+
+	<%
+		}
+	%>
+
+</body>
+</html>
+
+
+
+
+
